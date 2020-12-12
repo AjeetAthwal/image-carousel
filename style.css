@@ -1,0 +1,34 @@
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+#container{
+    background: skyblue;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.slide{
+    margin: auto;
+    width: 80%;
+    height: 50%;
+    display: none;
+}
+
+.red{
+    background: red;
+}
+
+.pink{
+    background: pink;
+}
+
+.blue{
+    background: blue;
+}
+
+.visible{
+    display: block;
+}
