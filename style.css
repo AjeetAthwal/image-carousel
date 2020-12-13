@@ -24,6 +24,7 @@ html, body{
     width: calc(var(--slide-width) * var(--slide-number));
     display: flex;
     flex-direction: row;
+    transition: right 1s ease-in-out;
 }
 
 .slide{
