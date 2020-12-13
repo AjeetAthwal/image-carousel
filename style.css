@@ -9,9 +9,16 @@ html, body{
     width: 100%;
     display: flex;
     background: rgb(122, 154, 167);
+    user-select: none;
 }
 
 #container{
+    height: var(--slide-height);
+    width: var(--slide-width);
+    margin: auto;
+}
+
+#slide-frame{
     height: var(--slide-height);
     width: var(--slide-width);
     margin: auto;
@@ -24,6 +31,7 @@ html, body{
     width: calc(var(--slide-width) * var(--slide-number));
     display: flex;
     flex-direction: row;
+    right: 0;
     transition: right 1s ease-in-out;
 }
 
@@ -43,4 +51,41 @@ html, body{
 
 .blue{
     background: blue;
+}
+
+.arrows{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.arrow{
+    position: relative;
+    height: 100%;
+    display: flex;
+    width: 40px;
+    background: gray;
+    opacity: 0.5;
+}
+
+.left-arrow{
+    bottom: 100%;
+}
+
+.right-arrow{
+    bottom: 100%;
+    left: calc(var(--slide-width) - 2 * 40px);
+}
+
+p{
+    margin: auto;
+    font-size: 1.5em;
+}
+
+.arrow:hover{
+    cursor: pointer;
+}
+
+.arrow:hover p{
+    font-size: 3em;
 }

@@ -35,3 +35,13 @@ const choosePrevSlide = () => {
   slidesDiv.style.right = selectedSlide * width + "px";
   return selectedSlide;
 };
+
+const arrowDivs = document.querySelectorAll(".arrow");
+
+const changePic = (e) => {
+  const currentDivClassList = e.currentTarget.classList;
+  if (currentDivClassList.contains("right-arrow")) chooseNextSlide();
+  if (currentDivClassList.contains("left-arrow")) choosePrevSlide();
+};
+
+arrowDivs.forEach((element) => element.addEventListener("click", changePic));
