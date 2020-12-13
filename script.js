@@ -64,21 +64,34 @@ const chooseSlide = (chosenSlide) => {
 };
 
 const changePic = (e) => {
+  clearTimeout(myTimer);
+  if (e === undefined) {
+    chooseNextSlide();
+    myTimer = setTimeout(changePic, timer);
+    return;
+  }
   const currentDiv = e.currentTarget;
   const currentDivClassList = currentDiv.classList;
   if (currentDivClassList.contains("right-arrow")) {
     chooseNextSlide();
+    myTimer = setTimeout(changePic, timer);
     return;
   }
   if (currentDivClassList.contains("left-arrow")) {
     choosePrevSlide();
+    myTimer = setTimeout(changePic, timer);
     return;
   }
 
   const chosenSlide = parseInt(currentDiv.dataset.slideNumber);
   chooseSlide(chosenSlide);
+  myTimer = setTimeout(chooseNextSlide, timer);
 };
 
 arrowDivs.forEach((element) => element.addEventListener("click", changePic));
 
 navSliders.forEach((element) => element.addEventListener("click", changePic));
+
+const timer = 5000;
+
+let myTimer = setTimeout(changePic, timer);
