@@ -1,20 +1,35 @@
+:root{
+    --slide-height: 400px;
+    --slide-width: 600px;
+    --slide-number: 3;
+}
+
 html, body{
     height: 100%;
     width: 100%;
+    display: flex;
+    background: rgb(122, 154, 167);
 }
 
 #container{
-    background: skyblue;
-    height: 100%;
-    width: 100%;
+    height: var(--slide-height);
+    width: var(--slide-width);
+    margin: auto;
+    overflow: hidden;
+}
+
+#slides{
+    position: relative;
+    height: var(--slide-height);
+    width: calc(var(--slide-width) * var(--slide-number));
     display: flex;
+    flex-direction: row;
 }
 
 .slide{
     margin: auto;
-    width: 80%;
-    height: 50%;
-    display: none;
+    height: var(--slide-height);
+    width: var(--slide-width);
 }
 
 .red{
@@ -27,8 +42,4 @@ html, body{
 
 .blue{
     background: blue;
-}
-
-.visible{
-    display: block;
 }

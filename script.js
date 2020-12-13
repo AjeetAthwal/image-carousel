@@ -1,16 +1,8 @@
-const mainDiv = document.querySelector("#container");
+const slidesDiv = document.querySelector("#slides");
 
-console.log(mainDiv.children);
-console.log(mainDiv.childNodes);
+const slideNumber = slidesDiv.children.length;
 
-console.log([].slice.call(mainDiv.children));
-
-const slideNumber = [].slice
-  .call(mainDiv.children)
-  .reduce((accumulator, current) => {
-    if (current.dataset.slideNumber !== undefined) accumulator++;
-    return accumulator;
-  }, 0);
+document.documentElement.style.setProperty("--slide-number", slideNumber);
 
 let selectedSlide = 0;
 
@@ -24,24 +16,22 @@ const prevSlide = (currentSlide) => {
   return currentSlide - 1;
 };
 
-const chooseNextSlide = (currentSlide) => {
-  mainDiv
-    .querySelector(`[data-slide-number="${currentSlide}"]`)
-    .classList.toggle("visible");
-  selectedSlide = nextSlide(currentSlide);
-  mainDiv
-    .querySelector(`[data-slide-number="${selectedSlide}"]`)
-    .classList.toggle("visible");
+const chooseNextSlide = () => {
+  selectedSlide = nextSlide(selectedSlide);
+  const width = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue("--slide-width")
+  );
+
+  slidesDiv.style.right = selectedSlide * width + "px";
   return selectedSlide;
 };
 
-const choosePrevSlide = (currentSlide) => {
-  mainDiv
-    .querySelector(`[data-slide-number="${currentSlide}"]`)
-    .classList.toggle("visible");
-  selectedSlide = prevSlide(currentSlide);
-  mainDiv
-    .querySelector(`[data-slide-number="${selectedSlide}"]`)
-    .classList.toggle("visible");
+const choosePrevSlide = () => {
+  selectedSlide = prevSlide(selectedSlide);
+  const width = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue("--slide-width")
+  );
+
+  slidesDiv.style.right = selectedSlide * width + "px";
   return selectedSlide;
 };
