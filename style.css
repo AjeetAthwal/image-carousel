@@ -89,3 +89,31 @@ p{
 .arrow:hover p{
     font-size: 3em;
 }
+
+#nav-sliders{
+    position: relative;
+    bottom: calc(100% + 50px);
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-slider{
+    width: 50px;
+    height: 100%;
+    display: flex;
+}
+
+.active {
+    font-size: 2em;
+}
+
+.nav-slider:hover{
+    cursor: pointer;
+}
+
+.nav-slider:hover:not(.active) p{
+    font-size: 3em;
+}
